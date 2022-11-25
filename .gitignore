@@ -5,4 +5,7 @@
 *.tfstate
 *.tfstate.*
 
-.git
+*.git
+
+cluster.yml
+
