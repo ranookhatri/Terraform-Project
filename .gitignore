@@ -8,5 +8,5 @@
 
 *.git
 
-cluster.yml
+*cluster.yml
 
