@@ -18,41 +18,41 @@ resource "aws_subnet" "public-subnet-2" {
     Name = "Frontend Subnet 2"
   }
 }
-# Creating 1st application subnet 
-resource "aws_subnet" "application-subnet-1" {
-  vpc_id     = aws_vpc.demovpc.id
-  cidr_block = var.subnet2_cidr
-  # map_public_ip_on_launch = false
-  availability_zone = "ap-south-1b"
-  tags = {
-    Name = "Backend Subnet 1"
-  }
-}
-# Creating 2nd application subnet 
-resource "aws_subnet" "application-subnet-2" {
-  vpc_id                  = aws_vpc.demovpc.id
-  cidr_block              = var.subnet3_cidr
-  map_public_ip_on_launch = false
-  availability_zone       = "ap-south-1a"
-  tags = {
-    Name = "Backend Subnet 2"
-  }
-}
-# Create Database Private Subnet
-resource "aws_subnet" "database-subnet-1" {
-  vpc_id            = aws_vpc.demovpc.id
-  cidr_block        = var.subnet4_cidr
-  availability_zone = "ap-south-1c"
-  tags = {
-    Name = "Database Subnet 1"
-  }
-}
-# Create Database Private Subnet
-resource "aws_subnet" "database-subnet-2" {
-  vpc_id            = aws_vpc.demovpc.id
-  cidr_block        = var.subnet5_cidr
-  availability_zone = "ap-south-1a"
-  tags = {
-    Name = "Database Subnet 2"
-  }
-}
+# # Creating 1st application subnet 
+# resource "aws_subnet" "application-subnet-1" {
+#   vpc_id     = aws_vpc.demovpc.id
+#   cidr_block = var.subnet2_cidr
+#   # map_public_ip_on_launch = false
+#   availability_zone = "ap-south-1b"
+#   tags = {
+#     Name = "Backend Subnet 1"
+#   }
+# }
+# # Creating 2nd application subnet 
+# resource "aws_subnet" "application-subnet-2" {
+#   vpc_id                  = aws_vpc.demovpc.id
+#   cidr_block              = var.subnet3_cidr
+#   map_public_ip_on_launch = false
+#   availability_zone       = "ap-south-1a"
+#   tags = {
+#     Name = "Backend Subnet 2"
+#   }
+# }
+# # Create Database Private Subnet
+# resource "aws_subnet" "database-subnet-1" {
+#   vpc_id            = aws_vpc.demovpc.id
+#   cidr_block        = var.subnet4_cidr
+#   availability_zone = "ap-south-1c"
+#   tags = {
+#     Name = "Database Subnet 1"
+#   }
+# }
+# # Create Database Private Subnet
+# resource "aws_subnet" "database-subnet-2" {
+#   vpc_id            = aws_vpc.demovpc.id
+#   cidr_block        = var.subnet5_cidr
+#   availability_zone = "ap-south-1a"
+#   tags = {
+#     Name = "Database Subnet 2"
+#   }
+# }

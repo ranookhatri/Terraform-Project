@@ -1,5 +1,5 @@
 # Creating Security Group 
-resource "aws_security_group" "web-sg" {
+resource "aws_security_group" "alb-sg" {
   vpc_id = aws_vpc.demovpc.id
   # Inbound Rules
   # HTTP access from anywhere
@@ -32,6 +32,6 @@ resource "aws_security_group" "web-sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "Web SG"
+    Name = "ALB SG"
   }
 }

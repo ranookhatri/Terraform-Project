@@ -30,3 +30,13 @@ variable "subnet5_cidr" {
 variable "aws_region" {
   default = "ap-south-1"
 }
+
+variable "ami_ids" {
+  type = map(string)
+  default = {
+    "ubuntu"   = "ami-062df10d14676e201"
+    "amzlinux" = "ami-074dc0a6f6c764218"
+    "redhat"   = "ami-069d9fecd19e7ed40"
+  }
+
+}

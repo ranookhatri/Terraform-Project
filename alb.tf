@@ -3,7 +3,7 @@ resource "aws_lb" "external-alb" {
   name               = "WebApplicationLoadBalancer"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.web-sg.id]
+  security_groups    = [aws_security_group.alb-sg.id]
   subnets            = [aws_subnet.public-subnet-1.id, aws_subnet.public-subnet-2.id]
 }
 resource "aws_lb_target_group" "target-elb" {
@@ -15,7 +15,7 @@ resource "aws_lb_target_group" "target-elb" {
 resource "aws_lb_target_group_attachment" "attachment" {
   target_group_arn = aws_lb_target_group.target-elb.arn
   target_id        = aws_instance.web-instance.id
-  port             = 80
+  port             = 8080
   depends_on = [
     aws_instance.web-instance,
   ]
@@ -30,7 +30,7 @@ resource "aws_lb_target_group_attachment" "attachment" {
 # }
 resource "aws_lb_listener" "external-elb" {
   load_balancer_arn = aws_lb.external-alb.arn
-  port              = "80"
+  port              = "8080"
   protocol          = "HTTP"
   default_action {
     type             = "forward"
