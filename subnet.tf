@@ -3,7 +3,7 @@ resource "aws_subnet" "public-subnet-1" {
   vpc_id                  = aws_vpc.demovpc.id
   cidr_block              = var.subnet_cidr
   map_public_ip_on_launch = true
-  availability_zone       = "ap-south-1a"
+  availability_zone       = var.availability_zone["mumbai-a"]
   tags = {
     Name = "Frontend Subnet 1"
   }
@@ -13,7 +13,7 @@ resource "aws_subnet" "public-subnet-2" {
   vpc_id                  = aws_vpc.demovpc.id
   cidr_block              = var.subnet1_cidr
   map_public_ip_on_launch = true
-  availability_zone       = "ap-south-1b"
+  availability_zone       = var.availability_zone["mumbai-b"]
   tags = {
     Name = "Frontend Subnet 2"
   }
@@ -23,7 +23,7 @@ resource "aws_subnet" "public-subnet-2" {
 #   vpc_id     = aws_vpc.demovpc.id
 #   cidr_block = var.subnet2_cidr
 #   # map_public_ip_on_launch = false
-#   availability_zone = "ap-south-1b"
+#   availability_zone = var.availability_zone["mumbai-a"]
 #   tags = {
 #     Name = "Backend Subnet 1"
 #   }
@@ -33,7 +33,7 @@ resource "aws_subnet" "public-subnet-2" {
 #   vpc_id                  = aws_vpc.demovpc.id
 #   cidr_block              = var.subnet3_cidr
 #   map_public_ip_on_launch = false
-#   availability_zone       = "ap-south-1a"
+#   availability_zone       = var.availability_zone["mumbai-b"]
 #   tags = {
 #     Name = "Backend Subnet 2"
 #   }
@@ -42,7 +42,7 @@ resource "aws_subnet" "public-subnet-2" {
 # resource "aws_subnet" "database-subnet-1" {
 #   vpc_id            = aws_vpc.demovpc.id
 #   cidr_block        = var.subnet4_cidr
-#   availability_zone = "ap-south-1c"
+#   availability_zone = var.availability_zone["mumbai-a"]
 #   tags = {
 #     Name = "Database Subnet 1"
 #   }
@@ -51,7 +51,7 @@ resource "aws_subnet" "public-subnet-2" {
 # resource "aws_subnet" "database-subnet-2" {
 #   vpc_id            = aws_vpc.demovpc.id
 #   cidr_block        = var.subnet5_cidr
-#   availability_zone = "ap-south-1a"
+#   availability_zone = var.availability_zone["mumbai-b"]
 #   tags = {
 #     Name = "Database Subnet 2"
 #   }

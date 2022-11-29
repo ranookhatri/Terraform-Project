@@ -38,5 +38,12 @@ variable "ami_ids" {
     "amzlinux" = "ami-074dc0a6f6c764218"
     "redhat"   = "ami-069d9fecd19e7ed40"
   }
+}
 
+variable "availability_zone" {
+  type = map(any)
+  default = {
+    "mumbai-a" = "ap-south-1a"
+    "mumbai-b" = "ap-south-1b"
+  }
 }
