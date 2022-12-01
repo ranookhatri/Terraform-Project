@@ -18,4 +18,3 @@ output "alb_id" {
 output "alb_dnsname" {
   value = aws_lb.external-alb.dns_name
 }
-

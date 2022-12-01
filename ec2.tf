@@ -1,7 +1,7 @@
 
 # Creating 1st EC2 instance in Public Subnet
 resource "aws_instance" "web-instance" {
-  ami           = var.ami_ids["ubuntu"]
+  ami           = var.ami_ids["redhat"]
   instance_type = "t2.micro"
   # count                       = 1
   key_name                    = "Terraform"
@@ -10,29 +10,29 @@ resource "aws_instance" "web-instance" {
   associate_public_ip_address = true
   # user_data                   = file("../../docs-setup/jenkins-setup.sh")
 
-  # provisioner "file" {
-  #   source = file("../../docs-setup/jenkins-setup.sh")
-  #   connection {
-  #     type     = "ssh"
-  #     user     = "ec2-user"
-  #     host_key = "Terraform"
-  #     host     = self.public_ip
-  #   }
-  #   destination = "/opt/jenkins-setup.sh"
-  # }
+  connection {
+    type        = "ssh"
+    user        = "ec2-user"
+    private_key = file("C:/Users/rkhatri/Desktop/Terraform/Terraform.pem")
+    host        = self.public_ip
+  }
 
-  # provisioner "remote-exec" {
-  #   connection {
-  #     type     = "ssh"
-  #     user     = "ec2-user"
-  #     host_key = "Terraform"
-  #     host     = self.public_ip
-  #   }
-  #   inline = [
-  #     "chmod +x /opt/jenkins-setup.sh",
-  #     "sudo sh /opt/jenkins-setup.sh",
-  #   ]
-  # }
+  provisioner "file" {
+    source = "../../docs-setup/jenkins-setup.sh"
+    # source = file("../../docs-setup/jenkins-setup.sh")
+    destination = "/tmp/jenkins-setup.sh"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      # "sudo su",
+      "sudo chown -R root:root /tmp/jenkins-setup.sh",
+      "sudo mv /tmp/jenkins-setup.sh /opt/jenkins-setup.sh",
+      "sudo chmod +x /opt/jenkins-setup.sh",
+      "sudo sh /opt/jenkins-setup.sh"
+    ]
+    on_failure = continue
+  }
 
   tags = {
     Name = "Public-Instance"
